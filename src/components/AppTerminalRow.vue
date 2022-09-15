@@ -34,7 +34,6 @@ export default {
     },
     
     response(expression) {
-        let response = '';
         let arr = [
             {
                 ask: ['hi', 'hello', 'hey', 'how are you'],
@@ -46,18 +45,34 @@ export default {
             }
         ]
 
-        this.findResponse(expression, arr);
+        //this.findResponse(expression, arr);
 
         this.inputs.push({
             id: ++this.counter,
-            value: response,
+            value: this.findResponse(expression, arr),
         });  
     },
 
-    findResponse(ask, arr){
-        arr.forEach((value) => {
-            console.log(value);
-        });
+    findResponse(expression, arr) {
+        let response = '';
+        let BreakException = {};
+
+        try {
+            arr.forEach((value) => {
+
+                if(value.ask.includes(expression)) {
+                    response = value.response;
+                    console.log(expression);
+                    throw BreakException
+                } else {
+                    response = 'wrong';
+                }
+            });
+        } catch (e) {
+            if (e !== BreakException) throw e;
+        }
+
+        return response;
     },
 
    
