@@ -1,0 +1,45 @@
+@import 'variables';
+
+h1 {
+    color: $text !important;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    margin-top: 0;
+
+    * {
+        color: $text !important;
+        font-size: 3rem;
+        margin-bottom: 15px;
+        margin-top: 0;
+    }
+}
+
+h2 {
+    color: $text !important;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    margin-top: 0;
+
+    * {
+        color: $text !important;
+        font-size: 2rem;
+        margin-bottom: 15px;
+        margin-top: 0;
+    }
+}
+
+* {
+    color: $text;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.green {
+    color: $green;
+}
+
+#app .caret {
+    background-color: $text;
+    width: 3px !important;
+    display: inline-flex !important;
+}

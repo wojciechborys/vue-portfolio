@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+@import 'variables';
+@import 'fonts';
+@import 'terminal';
+@import 'switcher';
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1450px;
+    margin: auto;
+}
+
+#app {
+    background-color: $main;
+    transition: all 250ms ease-in;
+
+    &.dark {
+        background-color: $gray;
+
+        * {
+            color: $main !important;
+        }
+
+        .caret {
+            background-color: $main !important;
+        }
+    }
+
+    .introduction {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        flex-direction: column;
+
+        @media(max-width: $notebook) {
+            width: 73%;
+        }
+
+        p {
+            bottom: 0;
+            position: absolute;
+            align-self: center;
+        }
+    }
+
+    [data-console-trigger] {
+        cursor: pointer;
+    }
+}
