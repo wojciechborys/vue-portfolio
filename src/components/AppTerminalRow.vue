@@ -29,7 +29,9 @@ export default {
             value: '',
         });
 
+        this.$refs['console'][this.inputs.length-3].disabled = true;
         this.$refs['console'][this.inputs.length-2].disabled = true;
+        
         this.$refs['console'][this.inputs.length-1].focus();
     },
     
@@ -41,11 +43,13 @@ export default {
             }, 
             {
                 ask: ['about'],
-                response: 'Some info about me'
+                response: 'Hey! My name is Wojciech, welcome to my website.'
+            },
+            {
+                ask: ['portfolio'],
+                response: 'You can find some works here, and here'
             }
         ]
-
-        //this.findResponse(expression, arr);
 
         this.inputs.push({
             id: ++this.counter,
@@ -56,16 +60,22 @@ export default {
     findResponse(expression, arr) {
         let response = '';
         let BreakException = {};
+        let helpCommand = 'help';
+        let helpResponse = 'List of available commands: '; 
 
         try {
             arr.forEach((value) => {
 
-                if(value.ask.includes(expression)) {
+                if(value.ask.includes(expression.toLowerCase())) {
                     response = value.response;
-                    console.log(expression);
                     throw BreakException
+                } else if(expression.toLowerCase() == helpCommand) {
+                    if(!response.includes(helpResponse)) {
+                        response = helpResponse;
+                    }
+                    response += value.ask + ' ' + ',';
                 } else {
-                    response = 'wrong';
+                    response = 'Command not recognized, type help to get full list of commands.';
                 }
             });
         } catch (e) {
@@ -74,12 +84,6 @@ export default {
 
         return response;
     },
-
-   
   },
-
-  mounted() {
-    
-  } 
 }
 </script>
