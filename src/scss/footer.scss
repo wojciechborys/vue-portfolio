@@ -7,15 +7,30 @@ $m-04: #bacbd9;
 $m-05: #bf80a9;
 
 .leave-a-msg {
-  display: flex;
-  margin-top: 100px;
+  position: relative;
+  overflow: hidden;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
+  }
+  &__planets {
+    z-index: 10;
+  }
+
   &__header {
-    font-size: 50px;
     font-weight: bold;
   }
 
   &__text {
+    z-index: 10;
     font-size: 25px;
+    @media (max-width: 992px) {
+      font-size: 20px;
+    }
   }
 
   &__mail {
@@ -26,6 +41,9 @@ $m-05: #bf80a9;
     border-bottom: solid 8px $green;
     text-decoration: none;
     transition-duration: 0.4s;
+    @media (max-width: 992px) {
+      font-size: 25px;
+    }
     &:hover {
       color: $green;
     }
@@ -39,6 +57,20 @@ $m-05: #bf80a9;
       background-position: -100% 0;
     }
   }
+
+  &::after {
+    content: "";
+    height: 171%;
+    right: -50%;
+    display: block;
+    position: absolute;
+    width: 160%;
+    bottom: -118%;
+    transform: rotate(10deg);
+    z-index: 0;
+    border-radius: 50%;
+    background-color: rgb(2 8 19);
+  }
 }
 
 .content {
@@ -48,7 +80,11 @@ $m-05: #bf80a9;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -100px;
+  margin-top: 70px;
+  @media (min-width: 992px) {
+    top: -100px;
+    margin-top: 0px;
+  }
 }
 
 .planet {
@@ -210,6 +246,9 @@ $m-05: #bf80a9;
   right: -130px;
   margin-top: -200px;
 
+  @media (max-width: 992px) {
+    display: none;
+  }
   .small-planet {
     width: 45%;
     height: 45%;

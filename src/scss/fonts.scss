@@ -1,45 +1,57 @@
-@import 'variables';
+@import "variables";
 
 h1 {
+  color: $text !important;
+  font-size: 3rem;
+  margin-bottom: 15px;
+  margin-top: 0;
+  @media (max-width: 992px) {
+    font-size: 2.25rem;
+    margin-bottom: 45px;
+  }
+  * {
     color: $text !important;
     font-size: 3rem;
     margin-bottom: 15px;
     margin-top: 0;
-
-    * {
-        color: $text !important;
-        font-size: 3rem;
-        margin-bottom: 15px;
-        margin-top: 0;
+    @media (max-width: 992px) {
+      font-size: 2.25rem;
+      margin-bottom: 45px;
     }
+  }
 }
 
 h2 {
+  color: $text !important;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  margin-top: 0;
+  @media (max-width: 992px) {
+    font-size: 1.75rem;
+  }
+  * {
     color: $text !important;
     font-size: 2rem;
     margin-bottom: 15px;
     margin-top: 0;
-
-    * {
-        color: $text !important;
-        font-size: 2rem;
-        margin-bottom: 15px;
-        margin-top: 0;
+    @media (max-width: 992px) {
+      font-size: 1.75rem;
     }
+  }
 }
 
 * {
-    color: $text;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
+  color: $text;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
 .green {
-    color: $green;
+  color: $green;
 }
 
 #app .caret {
-    background-color: $text;
-    width: 3px !important;
-    display: inline-flex !important;
+  background-color: $text;
+  width: 3px !important;
+  display: inline-flex !important;
 }

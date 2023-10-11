@@ -1,60 +1,24 @@
 <template>
   <div id="app" :class="{ dark: darkMode === true }">
-    <div class="container">
-      <AppHeader @clicked="checkModeState"></AppHeader>
-      <div class="introduction">
-        <h1>
-          <vue-typer
-            text="Hello, my name is Wojciech Borys"
-            caret-animation="smooth"
-            :repeat="0"
-          ></vue-typer>
-        </h1>
-        <h2>
-          <vue-typer
-            pre-type-delay="5000"
-            caret-animation="smooth"
-            text="I am Poland based Wordpress / Vue Developer, currently looking for work"
-            :repeat="0"
-          ></vue-typer>
-        </h2>
-        <p>
-          <small
-            data-console-trigger
-            @click="scrollTo('.terminal')"
-            class="green"
-            >Go on, ask me something!</small
-          >
-        </p>
-
-        <div v-if="stars && stars.length">
-          <div
-            class="star"
-            v-for="(star, index) in stars"
-            :key="index"
-            :style="star.style"
-          ></div>
-        </div>
-      </div>
-
-      <AppTerminal></AppTerminal>
-      <AppContact></AppContact>
-    </div>
+    <AppHeader @clicked="checkModeState"></AppHeader>
+    <AppHero></AppHero>
+    <AppTerminal></AppTerminal>
+    <AppContact></AppContact>
   </div>
 </template>
 
 <script>
-import AppTerminal from "./components/AppTerminal.vue";
 import AppHeader from "./components/AppHeader.vue";
-import { VueTyper } from "vue-typer";
-import ScrollMagic from "scrollmagic";
+import AppHero from "./components/AppHero.vue";
+import AppTerminal from "./components/AppTerminal.vue";
 import AppContact from "./components/AppContact.vue";
+import ScrollMagic from "scrollmagic";
 
 export default {
   name: "App",
   components: {
+    AppHero,
     AppTerminal,
-    VueTyper,
     AppHeader,
     AppContact,
   },
@@ -97,11 +61,9 @@ export default {
           animationDelay: delay,
         };
 
-        stars.push({ style: starStyle });
+        stars.push({ style: starStyle, index: index }); // Dodaj indeks
       }
       this.stars = stars;
-
-      console.log(stars);
     },
 
     changeBckgColor() {
@@ -143,26 +105,4 @@ export default {
 
 <style lang="scss">
 @import "./scss/main.scss";
-.star {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background-color: white;
-  border-radius: 50%;
-  opacity: 0;
-  animation: sparkle 4s normal forwards;
-}
-
-@keyframes sparkle {
-  50% {
-    opacity: 0.4;
-    transform: scale(0.5);
-    box-shadow: 0px 0px 10px 5px #ffffff5e;
-  }
-  100% {
-    opacity: 0.8;
-    transform: scale(1.2);
-    box-shadow: 0px 0px 2px 1px white;
-  }
-}
 </style>

@@ -16,7 +16,24 @@
     margin: 3em auto;
     padding: 1em 1.5em;
     overflow: auto;
+    @media (max-width: 992px) {
+      width: auto;
+      height: 350px;
+    }
+    &--response {
+      font-size: 14px;
 
+      * {
+        color: $text !important;
+        font-size: 14px;
+      }
+
+      img {
+        width: 150px;
+        border-radius: 50%;
+        margin-top: 20px;
+      }
+    }
     &--text {
       font-size: 14px;
 
