@@ -1,6 +1,6 @@
 <template>
   <header class="header__main">
-    <small class="logo" @click="scrollTop">W.</small>
+    <small class="logo" @click="scrollTo('#app')">W.</small>
     <label class="toggle-wrapper" for="toggle">
       <div
         class="toggle"
@@ -79,8 +79,8 @@ export default {
       console.log("APP Header" + this.isDarkMode);
     },
 
-    scrollTop() {
-      this.$emit("scrollTop", "#app");
+    scrollTo(el) {
+      this.$emit("scrollTo", el);
     },
   },
 

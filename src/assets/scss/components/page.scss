@@ -8,6 +8,10 @@ body {
   margin: auto;
   @media (max-width: 1450px) {
     max-width: 1050px;
+    margin: auto;
+  }
+
+  @media (max-width: 992px) {
     margin: 0 30px;
   }
 }
@@ -29,49 +33,5 @@ body {
     * {
       color: $text;
     }
-  }
-
-  .introduction {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    flex-direction: column;
-    margin: 0 50px;
-    @media (max-width: 992px) {
-      margin: 0;
-    }
-    p {
-      bottom: 0;
-      position: absolute;
-      align-self: center;
-    }
-  }
-
-  [data-console-trigger] {
-    cursor: pointer;
-  }
-}
-
-.star {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background-color: white;
-  border-radius: 50%;
-  opacity: 0;
-  animation: sparkle 4s normal forwards;
-}
-
-@keyframes sparkle {
-  50% {
-    opacity: 0.4;
-    transform: scale(0.5);
-    box-shadow: 0px 0px 10px 5px #ffffff5e;
-  }
-  100% {
-    opacity: 0.8;
-    transform: scale(1.2);
-    box-shadow: 0px 0px 2px 1px white;
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="app" ref="mainbody" :class="{ dark: darkMode }">
-    <AppHeader @clicked="changeState" @scrollTop="scrollTo"></AppHeader>
-    <AppHero></AppHero>
+    <AppHeader @clicked="changeState" @scrollTo="scrollTo"></AppHeader>
+    <AppHero :stars="stars" @scrollTo="scrollTo"></AppHero>
     <AppTerminal></AppTerminal>
     <AppFooter :darkMode="darkMode"></AppFooter>
   </div>

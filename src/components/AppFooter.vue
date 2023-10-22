@@ -29,6 +29,21 @@
           </div>
         </div>
       </div>
+      <aside class="leave-a-msg__socials">
+        <h3>You can also find me on</h3>
+        <a
+          class="leave-a-msg__socials--linkedin leave-a-msg__socials--icon"
+          target="_blank"
+          href="https://www.linkedin.com/in/wojciech-borys-261b73190/"
+          ><img src="@/assets/icons/linkedin.png"
+        /></a>
+        <a
+          class="leave-a-msg__socials--github leave-a-msg__socials--icon"
+          target="_blank"
+          href="https://github.com/wojciechborys"
+          ><img src="@/assets/icons/github.png"
+        /></a>
+      </aside>
     </div>
 
     <svg

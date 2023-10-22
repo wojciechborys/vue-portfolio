@@ -23,6 +23,9 @@
       display: inline-flex;
       border-radius: 50%;
       font-weight: 700;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

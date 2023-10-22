@@ -65,19 +65,20 @@ export default {
           response:
             "Welcome to my site!<br> Glad you stopped by, to learn all the commands available, just type help.",
         },
+
         {
-          ask: ["about", "experience", "work"],
+          ask: ["about", "work"],
           response:
             "<img src='https://media.licdn.com/dms/image/D4D03AQGNFfl8Mo-R-Q/profile-displayphoto-shrink_800_800/0/1695977460943?e=1702512000&v=beta&t=Ph2NWqAOUbzE3SZU8kQMIgocjUEZFpUUXU7ztvz_O6s'> <br><br> My name is Wojciech Borys,<br>I'm 28 years old and I come from Olsztyn.<br>For almost 5 years, I've been working in the IT industry, primarily with WordPress.<br>Recently, I've also been developing applications based on Vue.js.<br>I've collaborated with numerous companies, both on a project basis and in ongoing B2B partnerships.<br>Most of the clients of these companies came from beyond the western border, often from Germany, the Netherlands, or the USA.<br>I run a business, and I'm not a VAT payer.",
         },
 
         {
-          ask: ["contact", "telephone", "email"],
+          ask: ["contact", "telephone", "email", "linkedin", "facebook"],
           response:
             "Would you like to contact me? Great! Please email me at <a href='mailto:hello@creavity.pl'>hello@creavity.pl</a>, or find me at <a target='blank' href='https://www.linkedin.com/in/wojciech-borys-261b73190/'>Linkedin</a>",
         },
         {
-          ask: ["stack", "skills", "languages"],
+          ask: ["stack", "skills", "languages", "experience"],
           response:
             "I feel most comfortable with WordPress. This is probably because I've had exposure to it since the beginning of my career. I work with both WordPress and WooCommerce. <br> For some time now, I've been expanding my skills in Vue.js, and this website is a result of that. <br> In summary, I have experience in: <br> - PHP, <br> - WordPress, <br> - WooCommerce, <br> - Vue.js. <br> I use: <br> - GIT, <br> - BEM, <br> - SCSS. <br> I've created various websites and applications, ranging from simple WordPress-based projects to complex WooCommerce stores, and even a sophisticated LMS application entirely built on Vue.js.",
         },
