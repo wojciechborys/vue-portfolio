@@ -1,0 +1,28 @@
+.header {
+  &__main {
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 1450px;
+    top: 10px;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    @media (max-width: 1450px) {
+      max-width: 1050px;
+      margin: 0 30px;
+      width: auto;
+    }
+
+    .logo {
+      background-color: #b6c2d9;
+      color: rgb(39, 41, 50) !important;
+      padding: 18px;
+      display: inline-flex;
+      border-radius: 50%;
+      font-weight: 700;
+    }
+  }
+}

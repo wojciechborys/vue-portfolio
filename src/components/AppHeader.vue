@@ -1,15 +1,15 @@
 <template>
-  <header>
-    <small class="logo">W.</small>
+  <header class="header__main">
+    <small class="logo" @click="scrollTop">W.</small>
     <label class="toggle-wrapper" for="toggle">
       <div
         class="toggle"
-        :class="{ dark: darkMode === true }"
         ref="toggler"
+        :class="{ dark: !isDarkMode }"
         @click="toggleMode"
       >
         <span class="hidden">{{
-          darkMode === true ? "toggle to light mode" : "toggle to dark mode"
+          isDarkMode ? "toggle to light mode" : "toggle to dark mode"
         }}</span>
         <span class="switcher"></span>
         <div class="icons">
@@ -58,26 +58,29 @@
 <script>
 export default {
   name: "AppHeader",
-
   data() {
     return {
-      darkMode: localStorage.getItem("state"),
+      isDarkMode: false,
     };
   },
 
   methods: {
     toggleMode() {
-      this.darkMode === false
-        ? (this.darkMode = true)
-        : (this.darkMode = false);
-      this.$emit("clicked", this.darkMode);
-      let state = this.darkMode;
-      localStorage.setItem("state", state);
+      this.isDarkMode = !this.isDarkMode;
+      localStorage.setItem("state", this.isDarkMode);
+      this.$emit("clicked", this.isDarkMode);
+      console.log("APP Header " + this.isDarkMode);
     },
 
     checkMode() {
-      //this.darkMode = localStorage.getItem('state');
-      //console.log(this.darkMode);
+      if (localStorage.getItem("state")) {
+        this.isDarkMode = localStorage.getItem("state") === "true";
+      }
+      console.log("APP Header" + this.isDarkMode);
+    },
+
+    scrollTop() {
+      this.$emit("scrollTop", "#app");
     },
   },
 
@@ -86,5 +89,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss"></style>

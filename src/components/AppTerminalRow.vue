@@ -61,7 +61,7 @@ export default {
     response(expression) {
       let arr = [
         {
-          ask: ["hi", "hello", "hey", "how are you, welcome, start"],
+          ask: ["hi", "hello", "hey", "how are you", "welcome", "start"],
           response:
             "Welcome to my site!<br> Glad you stopped by, to learn all the commands available, just type help.",
         },
@@ -116,7 +116,7 @@ export default {
             if (!response.includes(helpResponse)) {
               response = helpResponse;
             }
-            response += value.ask.join(", ") + " ,";
+            response += value.ask.join(", ") + ", ";
           }
         });
 

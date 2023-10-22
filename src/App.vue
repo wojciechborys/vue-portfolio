@@ -1,9 +1,9 @@
 <template>
-  <div id="app" :class="{ dark: darkMode === true }">
-    <AppHeader @clicked="checkModeState"></AppHeader>
+  <div id="app" ref="mainbody" :class="{ dark: darkMode }">
+    <AppHeader @clicked="changeState" @scrollTop="scrollTo"></AppHeader>
     <AppHero></AppHero>
     <AppTerminal></AppTerminal>
-    <AppContact></AppContact>
+    <AppFooter :darkMode="darkMode"></AppFooter>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 import AppHeader from "./components/AppHeader.vue";
 import AppHero from "./components/AppHero.vue";
 import AppTerminal from "./components/AppTerminal.vue";
-import AppContact from "./components/AppContact.vue";
+import AppFooter from "./components/AppFooter.vue";
 import ScrollMagic from "scrollmagic";
 
 export default {
@@ -20,13 +20,13 @@ export default {
     AppHero,
     AppTerminal,
     AppHeader,
-    AppContact,
+    AppFooter,
   },
   data() {
     return {
       stars: [],
       popupState: false,
-      darkMode: localStorage.getItem("state"),
+      darkMode: false,
     };
   },
 
@@ -40,8 +40,23 @@ export default {
       element.scrollIntoView({ behavior: "smooth" });
     },
 
-    checkModeState(value) {
-      value === true ? (this.darkMode = true) : (this.darkMode = false);
+    modeState() {
+      const storedValue = localStorage.getItem("state");
+      let val = storedValue === "true";
+      if (localStorage.getItem("state")) {
+        this.darkMode = val;
+      }
+      this.changeBckgColor();
+      console.log("APP Main" + this.darkMode);
+    },
+
+    changeBodyClass() {
+      this.$refs.mainbody.classList.toggle("dark");
+    },
+
+    changeState() {
+      this.changeBodyClass();
+      this.modeState();
     },
 
     getRandom(min, max) {
@@ -68,24 +83,40 @@ export default {
 
     changeBckgColor() {
       var controller = new ScrollMagic.Controller();
+      let appElement = document.querySelector("#app");
+      let darkStartColor = [15, 15, 15];
+      let darkEndColor = [95, 104, 119];
+      let lightStartColor = [240, 240, 240];
+      let lightEndColor = [179, 179, 179];
+      if (this.darkMode) {
+        appElement.style.backgroundColor = `rgb(${darkStartColor})`;
+      } else {
+        appElement.style.backgroundColor = `rgb(${lightStartColor})`;
+      }
 
       new ScrollMagic.Scene({
         duration: 500,
         offset: 100,
       })
-        .on("progress", function (event) {
-          var progress = event.progress; // Get the scroll progress value (between 0 and 1)
-          var startColor = [15, 15, 15]; // RGB values for the initial color
-          var endColor = [95, 104, 119]; // RGB values for the target color
+        .on("progress", (event) => {
+          let progress = event.progress;
 
-          // Calculate the transition color based on the progress
-          var transitionColor = startColor.map((channel, index) => {
-            var difference = endColor[index] - channel;
-            var transitionValue = channel + difference * progress;
-            return Math.round(transitionValue);
-          });
+          let transitionColor = [];
 
-          var appElement = document.querySelector("#app");
+          if (this.darkMode) {
+            transitionColor = darkStartColor.map((channel, index) => {
+              let difference = darkEndColor[index] - channel;
+              let transitionValue = channel + difference * progress;
+              return Math.round(transitionValue);
+            });
+          } else {
+            transitionColor = lightStartColor.map((channel, index) => {
+              let difference = lightEndColor[index] - channel;
+              let transitionValue = channel + difference * progress;
+              return Math.round(transitionValue);
+            });
+          }
+
           appElement.style.backgroundColor = `rgb(${transitionColor.join(
             ","
           )})`;
@@ -95,14 +126,12 @@ export default {
   },
 
   mounted() {
-    this.changeBckgColor();
+    this.modeState();
     this.initializeStars();
   },
-
-  computed: {},
 };
 </script>
 
 <style lang="scss">
-@import "./scss/main.scss";
+@import "@/assets/scss/main.scss";
 </style>

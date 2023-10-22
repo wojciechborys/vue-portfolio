@@ -18,18 +18,16 @@ body {
 }
 
 #app {
-  background-color: $main;
+  background-color: $gray;
   transition: all 250ms ease-in;
-
+  * {
+    color: $main;
+  }
   &.dark {
-    background-color: $gray;
+    background-color: $main;
 
     * {
-      color: $main !important;
-    }
-
-    .caret {
-      background-color: $main !important;
+      color: $text;
     }
   }
 

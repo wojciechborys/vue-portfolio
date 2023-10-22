@@ -1,0 +1,67 @@
+@import "./partials/planets";
+
+.leave-a-msg {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 300px;
+  &__shape {
+    height: 300px;
+    display: block;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    path {
+      fill: rgb(200 200 200);
+    }
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
+  }
+  &__planets {
+    z-index: 10;
+    position: relative;
+    flex-basis: 46%;
+  }
+
+  &__header {
+    font-weight: bold;
+  }
+
+  &__text {
+    z-index: 10;
+    font-size: 25px;
+    @media (max-width: 992px) {
+      font-size: 20px;
+    }
+  }
+
+  &__mail {
+    font-size: 38px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    border-bottom: solid 8px $green;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    @media (max-width: 992px) {
+      font-size: 25px;
+    }
+    &:hover {
+      color: $green !important;
+    }
+  }
+
+  @keyframes wave {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+}

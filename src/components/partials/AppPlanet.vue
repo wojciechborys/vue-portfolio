@@ -1,18 +1,31 @@
 <template>
-  <div class="content">
-    <div class="planet">
-      <div class="ring"></div>
-      <div class="cover-ring"></div>
-      <div class="spots">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+  <div :class="type">
+    <div class="ring" v-if="ring"></div>
+    <div class="cover-ring" v-if="ring"></div>
+    <div class="spots">
+      <span v-for="(spot, index) in spots" :key="index"></span>
     </div>
-    <p>loading</p>
   </div>
 </template>
+<script>
+export default {
+  name: "AppPlanet",
+  data() {},
+
+  props: {
+    spots: {
+      type: Number,
+      required: false,
+    },
+    ring: {
+      type: Boolean,
+      required: false,
+    },
+
+    type: {
+      type: String,
+      required: true,
+    },
+  },
+};
+</script>

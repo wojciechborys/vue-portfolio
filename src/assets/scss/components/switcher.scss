@@ -27,6 +27,7 @@
   padding: 10px;
   position: relative;
   cursor: pointer;
+  transform: translateX(-30px);
 
   .icons svg {
     fill: white;
@@ -69,7 +70,7 @@
       animation-name: switch;
       animation-duration: 550ms;
       animation-fill-mode: forwards;
-      transform: translateX(-30px);
+      transform: translateX(0px);
     }
   }
 }
